@@ -12,7 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using System.IO;
+using Microsoft.Office.Core;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace CSharpExcelAPplication
 {
@@ -31,11 +33,17 @@ namespace CSharpExcelAPplication
             Environment.Exit(1);
         }
 
-        public String openFileDialogBox()
+        public string openFileDialogBox()
         {
-            String fileName; 
+            string fileName; 
             //create an instance of the open file dialog box.
             Microsoft.Win32.OpenFileDialog openfileDialog1 = new Microsoft.Win32.OpenFileDialog();
+
+            // Set the title of the dialog box
+            openfileDialog1.Title = "Choose your file ";
+
+            // Set filter options and filter index.
+            openfileDialog1.Filter = "CSV File|*.csv|Excel Workbook|*.xlsx";
 
             bool? userClickedOK = openfileDialog1.ShowDialog();
 
@@ -49,11 +57,83 @@ namespace CSharpExcelAPplication
             return "No File Selected";
         }
 
+        public void readInFile(string fileName)
+        {
+            List<string[]> listA = new List<string[]>();
+            List<string> listB = new List<string>();
+            string[] row;
+
+            StreamReader sr = new StreamReader(fileName);
+            string data = sr.ReadLine();
+            while (!sr.EndOfStream)
+            {
+                string line = sr.ReadLine();
+                row = line.Split(',');
+
+                listA.Add(row);
+                MessageBox.Show(line);
+            }
+        }
+
+        public void ExcelApplication()
+        {
+            Excel.Application oXL;
+            Excel._Workbook oWB;
+            Excel._Worksheet oSheet;
+            Excel.Range oRng;
+
+            // Start Excel and get Application object.
+            oXL = new Excel.Application();
+            oXL.Visible = true;
+
+            // Get a new workbook.
+            oWB = (Excel._Workbook)(oXL.Workbooks.Add(System.Reflection.Missing.Value));
+            oSheet = (Excel._Worksheet)oWB.ActiveSheet;
+
+            // Add table headers going cell by cell. 
+        }
+
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
         {
-            String fileName;
+            string fileName;
             fileName = openFileDialogBox();
             heatmapLayoutTextbox.Text = fileName;
         }
+
+        private void dataLowButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName;
+            fileName = openFileDialogBox();
+            dataLowTextbox.Text = fileName;
+        }
+
+        private void dataMedButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName;
+            fileName = openFileDialogBox();
+            dataMedTextbox.Text = fileName;
+        }
+
+        private void dataHighButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName;
+            fileName = openFileDialogBox();
+            dataHighTextbox.Text = fileName;
+        }
+
+        private void dataUltraButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName;
+            fileName = openFileDialogBox();
+            dataUltraTextbox.Text = fileName;
+        }
+
+        private void goButton_Click(object sender, RoutedEventArgs e)
+        {
+            string fileName = dataLowTextbox.Text;
+            readInFile(fileName);
+            ExcelApplication();
+        }
+
     }
 }

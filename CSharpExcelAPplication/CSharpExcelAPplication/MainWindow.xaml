@@ -4,22 +4,27 @@
         Title="Convert to Excel" Height="550" Width="700">
     <Grid>
         <Label x:Name="heatmapLayoutLabel" Content="Choose the heatmap layout file: " HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="heatmapLayoutTextbox" HorizontalAlignment="Left" Height="23" Margin="45,62,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
+        <TextBox x:Name="heatmapLayoutTextbox" HorizontalAlignment="Left" Height="23" Margin="45,62,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
         <Button x:Name="heatmapLayoutbutton" Content="Browse" HorizontalAlignment="Left" Margin="475,63,0,0" VerticalAlignment="Top" Width="75" Click="heatmapLayoutbutton_Click"/>
+        
         <Label x:Name="dataLowLabel" Content="Choose the data low file: " HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="dataLowTextbox" HorizontalAlignment="Left" Height="23" Margin="45,116,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="410"/>
-        <Button x:Name="dataLowButton" Content="Browse" HorizontalAlignment="Left" Margin="475,116,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="dataLowTextbox" HorizontalAlignment="Left" Height="23" Margin="45,116,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
+        <Button x:Name="dataLowButton" Content="Browse" HorizontalAlignment="Left" Margin="475,116,0,0" VerticalAlignment="Top" Width="75" Click="dataLowButton_Click"/>
+        
         <Label x:Name="dataMedLabel" Content="Choose the data medium file: " HorizontalAlignment="Left" Margin="45,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.289,0.654"/>
-        <TextBox x:Name="dataMedTextbox" HorizontalAlignment="Left" Height="23" Margin="45,175,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="410"/>
-        <Button x:Name="dataMedButton" Content="Browse" HorizontalAlignment="Left" Margin="475,175,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="dataMedTextbox" HorizontalAlignment="Left" Height="23" Margin="45,175,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
+        <Button x:Name="dataMedButton" Content="Browse" HorizontalAlignment="Left" Margin="475,175,0,0" VerticalAlignment="Top" Width="75" Click="dataMedButton_Click"/>
+        
         <Label x:Name="dataHighLabel" Content="Choose the data high file: " HorizontalAlignment="Left" Margin="45,209,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="dataHighTextbox" HorizontalAlignment="Left" Height="23" Margin="45,235,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="410"/>
-        <Button x:Name="dataHighButton" Content="Browse" HorizontalAlignment="Left" Margin="475,236,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="dataHighTextbox" HorizontalAlignment="Left" Height="23" Margin="45,235,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
+        <Button x:Name="dataHighButton" Content="Browse" HorizontalAlignment="Left" Margin="475,236,0,0" VerticalAlignment="Top" Width="75" Click="dataHighButton_Click"/>
+        
         <Label x:Name="dataUltraLabel" Content="Choose the data ultra file: " HorizontalAlignment="Left" Margin="45,271,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="dataUltraTextbox" HorizontalAlignment="Left" Height="23" Margin="45,297,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="410"/>
-        <Button x:Name="dataUltraButton" Content="Browse" HorizontalAlignment="Left" Margin="475,298,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox x:Name="dataUltraTextbox" HorizontalAlignment="Left" Height="23" Margin="45,297,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
+        <Button x:Name="dataUltraButton" Content="Browse" HorizontalAlignment="Left" Margin="475,298,0,0" VerticalAlignment="Top" Width="75" Click="dataUltraButton_Click"/>
+        
         <Button x:Name="exitButton" Content="Exit" HorizontalAlignment="Left" Margin="25,431,0,0" VerticalAlignment="Top" Width="94" Height="68" Click="exitButton_Click" RenderTransformOrigin="0.074,1.235"/>
-        <Button x:Name="goButton" Content="Go!" HorizontalAlignment="Left" Margin="568,431,0,0" VerticalAlignment="Top" Width="94" Height="68"/>
+        <Button x:Name="goButton" Content="Go!" HorizontalAlignment="Left" Margin="568,431,0,0" VerticalAlignment="Top" Width="94" Height="68" Click="goButton_Click"/>
 
     </Grid>
 </Window>
