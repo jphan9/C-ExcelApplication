@@ -57,14 +57,14 @@ namespace CSharpExcelAPplication
             return "No File Selected";
         }
 
-        public void readInFile(string fileName)
+        public List<string[]> readInFile(string fileName)
         {
             List<string[]> listA = new List<string[]>();
             List<string> listB = new List<string>();
             string[] row;
 
             StreamReader sr = new StreamReader(fileName);
-            string data = sr.ReadLine();
+            //string data = sr.ReadLine();
             while (!sr.EndOfStream)
             {
                 string line = sr.ReadLine();
@@ -72,10 +72,13 @@ namespace CSharpExcelAPplication
 
                 listA.Add(row);
                 MessageBox.Show(line);
+
+                return listA;
             }
+            return listA;
         }
 
-        public void ExcelApplication()
+        public void ExcelApplication(List<string[]> listA)
         {
             Excel.Application oXL;
             Excel._Workbook oWB;
@@ -90,7 +93,11 @@ namespace CSharpExcelAPplication
             oWB = (Excel._Workbook)(oXL.Workbooks.Add(System.Reflection.Missing.Value));
             oSheet = (Excel._Worksheet)oWB.ActiveSheet;
 
-            // Add table headers going cell by cell. 
+            // Create an Array to multiple values at once.
+            //string[,] values = new string[10,10];
+            
+            int rowIndex = 1;
+            oSheet.Cells[rowIndex, "A"] = listA[0];
         }
 
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
@@ -131,8 +138,8 @@ namespace CSharpExcelAPplication
         private void goButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName = dataLowTextbox.Text;
-            readInFile(fileName);
-            ExcelApplication();
+            List<string[]> listA = readInFile(fileName);
+            ExcelApplication(listA);
         }
 
     }
