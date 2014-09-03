@@ -57,33 +57,51 @@ namespace CSharpExcelAPplication
             return "No File Selected";
         }
 
-        public List<string[]> readInFile(string fileName)
+        public List<string> readInFile(string fileName, int column)
         {
-            List<string[]> listA = new List<string[]>();
+            List<string> listA = new List<string>();
             List<string> listB = new List<string>();
-            string[] row;
+            List<string> listC = new List<string>();
+            //var row;
 
             StreamReader sr = new StreamReader(fileName);
             //string data = sr.ReadLine();
             while (!sr.EndOfStream)
             {
-                string line = sr.ReadLine();
-                row = line.Split(',');
+                //string line = sr.ReadLine();
+                var row = sr.ReadLine().Split(',');
 
-                listA.Add(row);
-                MessageBox.Show(line);
-
+                listA.Add(row[0]);
+                listB.Add(row[1]);
+                listC.Add(row[2]);
+               
+            }
+            if (column == 0)
+            {
                 return listA;
             }
-            return listA;
+            else if (column == 1)
+            {
+                return listB;
+            }
+            else if (column == 2)
+            {
+                return listC;
+            }
+            else
+                return listA;
         }
 
-        public void ExcelApplication(List<string[]> listA)
+        public void ExcelApplication(string fileName)
         {
             Excel.Application oXL;
             Excel._Workbook oWB;
             Excel._Worksheet oSheet;
             Excel.Range oRng;
+
+            List<string> listOfDataA;
+            List<string> listOfDataB;
+            List<string> listOfDataC;
 
             // Start Excel and get Application object.
             oXL = new Excel.Application();
@@ -93,18 +111,38 @@ namespace CSharpExcelAPplication
             oWB = (Excel._Workbook)(oXL.Workbooks.Add(System.Reflection.Missing.Value));
             oSheet = (Excel._Worksheet)oWB.ActiveSheet;
 
-            // Create an Array to multiple values at once.
-            //string[,] values = new string[10,10];
-            
-            int rowIndex = 1;
-            oSheet.Cells[rowIndex, "A"] = listA[0];
+            listOfDataA = readInFile(fileName, 0);
+            listOfDataB = readInFile(fileName, 1);
+            listOfDataC = readInFile(fileName, 2);
+
+            int rowIndexA = 1;
+            int rowIndexB = 1;
+            int rowIndexC = 1;
+
+            for (int i = 0; i < listOfDataA.Count; i++)
+            {
+                oSheet.Cells[rowIndexA, "A"] = listOfDataA[i];
+                rowIndexA++;
+            }
+
+            for (int i = 0; i < listOfDataB.Count; i++)
+            {
+                oSheet.Cells[rowIndexB, "B"] = listOfDataB[i];
+                rowIndexB++;
+            }
+
+            for (int i = 0; i < listOfDataC.Count; i++)
+            {
+                oSheet.Cells[rowIndexC, "C"] = listOfDataC[i];
+                rowIndexC++;
+            }
         }
 
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
             fileName = openFileDialogBox();
-            heatmapLayoutTextbox.Text = fileName;
+            LayoutTextbox.Text = fileName;
         }
 
         private void dataLowButton_Click(object sender, RoutedEventArgs e)
@@ -138,8 +176,8 @@ namespace CSharpExcelAPplication
         private void goButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName = dataLowTextbox.Text;
-            List<string[]> listA = readInFile(fileName);
-            ExcelApplication(listA);
+            //List<string> listA = readInFile(fileName);
+            ExcelApplication(fileName);
         }
 
     }

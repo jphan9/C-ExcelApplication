@@ -3,9 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Convert to Excel" Height="550" Width="700">
     <Grid>
-        <Label x:Name="heatmapLayoutLabel" Content="Choose the heatmap layout file: " HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="heatmapLayoutTextbox" HorizontalAlignment="Left" Height="23" Margin="45,62,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
-        <Button x:Name="heatmapLayoutbutton" Content="Browse" HorizontalAlignment="Left" Margin="475,63,0,0" VerticalAlignment="Top" Width="75" Click="heatmapLayoutbutton_Click"/>
+        <Label x:Name="LayoutLabel" Content="Choose the layout file: " HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="LayoutTextbox" HorizontalAlignment="Left" Height="23" Margin="45,62,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
+        <Button x:Name="Layoutbutton" Content="Browse" HorizontalAlignment="Left" Margin="475,63,0,0" VerticalAlignment="Top" Width="75" Click="heatmapLayoutbutton_Click"/>
         
         <Label x:Name="dataLowLabel" Content="Choose the data low file: " HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="dataLowTextbox" HorizontalAlignment="Left" Height="23" Margin="45,116,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
