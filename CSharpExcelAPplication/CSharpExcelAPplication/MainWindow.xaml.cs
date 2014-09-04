@@ -136,6 +136,23 @@ namespace CSharpExcelAPplication
                 oSheet.Cells[rowIndexC, "C"] = listOfDataC[i];
                 rowIndexC++;
             }
+
+            //gets the total number of cells used in Column C
+            int columnTotalC = oSheet.UsedRange.Columns["C:C", Type.Missing].rows.count;
+            
+            MessageBox.Show(Convert.ToString(columnTotalC));
+
+            int cIndex1 =1, cIndex2 = 4;
+
+            int index = 1;
+            for (int i = 0; i < columnTotalC/4; i++)
+            {
+                
+                oSheet.Range["G" + Convert.ToString(index)].Formula = "=Average(C" + Convert.ToString(cIndex1) + ":C" + Convert.ToString(cIndex2);
+                cIndex1 = cIndex1 + 3;
+                cIndex2 = cIndex2 + 4;
+                index++;
+            }
         }
 
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
