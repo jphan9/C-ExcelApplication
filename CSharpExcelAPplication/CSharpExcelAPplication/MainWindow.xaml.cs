@@ -103,6 +103,9 @@ namespace CSharpExcelAPplication
             List<string> listOfDataB;
             List<string> listOfDataC;
 
+            int cIndex1 = 1, cIndex2;
+            int index = 1;
+
             // Start Excel and get Application object.
             oXL = new Excel.Application();
             oXL.Visible = true;
@@ -142,15 +145,11 @@ namespace CSharpExcelAPplication
             
             MessageBox.Show(Convert.ToString(columnTotalC));
 
-            int cIndex1 =1, cIndex2 = 4;
-
-            int index = 1;
             for (int i = 0; i < columnTotalC/4; i++)
             {
-                
+                cIndex2 = cIndex1 + 3;
                 oSheet.Range["G" + Convert.ToString(index)].Formula = "=Average(C" + Convert.ToString(cIndex1) + ":C" + Convert.ToString(cIndex2);
-                cIndex1 = cIndex1 + 3;
-                cIndex2 = cIndex2 + 4;
+                cIndex1 = cIndex2 + 1;
                 index++;
             }
         }
