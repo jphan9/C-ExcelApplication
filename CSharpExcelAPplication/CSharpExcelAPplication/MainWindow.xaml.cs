@@ -193,12 +193,15 @@ namespace CSharpExcelAPplication
 
         private void goButton_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = LayoutTextbox.Text;
-            string fileName1 = dataLowTextbox.Text;
-            string fileName2 = dataMedTextbox.Text;
+            string openFileName = LayoutTextbox.Text;
+            string fileName = dataLowTextbox.Text;
+            string fileName1 = dataMedTextbox.Text;
+            string fileName2 = dataHighTextbox.Text;
+            string fileName3 = dataUltraTextbox.Text;
             //List<string> listA = readInFile(fileName);
-            eApp.writeToExcelLow(fileName1, fileName);
-            eApp.writeToExcelMed(fileName2);
+            //eApp.writeToExcelLow(fileName1, fileName);
+            eApp.openExcel(openFileName, fileName, fileName1, fileName2, fileName3);
+            //eApp.writeToExcelMed(fileName2);
         }
 
     }

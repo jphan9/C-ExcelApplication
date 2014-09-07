@@ -11,21 +11,13 @@ namespace CSharpExcelAPplication
 {
     class ExcelApplication 
     {
-        public void writeToExcelLow(string fileName, string openFileName)
-        {
-            MainWindow main = new MainWindow();
 
+        public void openExcel(string openFileName, string fileName, string fileName1, string fileName2, string fileName3)
+        {
             Excel.Application oXL;
             Excel._Workbook oWB;
             Excel._Worksheet oSheet;
             Excel.Range oRng;
-
-            List<string> listOfDataA;
-            List<string> listOfDataB;
-            List<string> listOfDataC;
-
-            int cIndex1 = 1, cIndex2;
-            int index = 1;
 
             // Start Excel and get Application object.
             oXL = new Excel.Application();
@@ -35,10 +27,49 @@ namespace CSharpExcelAPplication
             //oWB = (Excel._Workbook)(oXL.Workbooks.Add(System.Reflection.Missing.Value));
             oWB = (Excel._Workbook)(oXL.Workbooks.Open(@openFileName));
             //oSheet = (Excel._Worksheet)oWB.ActiveSheet;
+
             oSheet = (Excel._Worksheet)oWB.Sheets[2];
+            writeToExcel(fileName, oSheet,"Data Low");
+            oSheet = (Excel._Worksheet)oWB.Sheets[3];
+            writeToExcel(fileName1, oSheet, "Data Med");
+            //if ((Excel._Worksheet)oWB.Sheets[4] == null)
+            //
+                oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing,oWB.Sheets[3],Type.Missing,Type.Missing);
+                writeToExcel(fileName2, oSheet, "Data High");
+            //}
+            oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[4], Type.Missing, Type.Missing);
+            writeToExcel(fileName3, oSheet, "Data Ultra");
+
+        }
+
+        public void writeToExcel(string fileName, Excel._Worksheet oSheet, string sheetName)
+        {
+            MainWindow main = new MainWindow();
+
+            /*Excel.Application oXL;
+            Excel._Workbook oWB;
+            Excel._Worksheet oSheet;
+            Excel.Range oRng;*/
+
+            List<string> listOfDataA;
+            List<string> listOfDataB;
+            List<string> listOfDataC;
+
+            int cIndex1 = 1, cIndex2;
+            int index = 1;
+
+            // Start Excel and get Application object.
+            //oXL = new Excel.Application();
+            //oXL.Visible = true;
+
+            // Get a new workbook.
+            //oWB = (Excel._Workbook)(oXL.Workbooks.Add(System.Reflection.Missing.Value));
+            //oWB = (Excel._Workbook)(oXL.Workbooks.Open(@openFileName));
+            //oSheet = (Excel._Worksheet)oWB.ActiveSheet;
+            //oSheet = (Excel._Worksheet)oWB.Sheets[2];
 
             // Assign new name to worksheet.
-            oSheet.Name = "Data Low";
+            oSheet.Name = sheetName;
 
             // Delete everything in that sheet. 
             oSheet.Cells.ClearContents();
@@ -79,15 +110,20 @@ namespace CSharpExcelAPplication
                 cIndex1 = cIndex2 + 1;
                 index++;
             }
+
+            // Write Average and Max values of column G
+            oSheet.Cells[1, "I"] = "Average: ";
+            oSheet.Cells[2, "I"] = "Max: ";
+            oSheet.Range["J1"].Formula = "=Average(G:G)";
+            oSheet.Range["J2"].Formula = "=Max(G:G)";
         }
 
-        public void writeToExcelMed(string fileName)
+        /*public void writeToExcelMed(string fileName)
         {
             Excel.Application oXL;
             Excel._Workbook oWB;
             Excel._Worksheet oSheet;
-            Excel.Range oRng;
-
+         
             MainWindow main = new MainWindow();
 
             List<string> listOfDataA;
@@ -145,6 +181,6 @@ namespace CSharpExcelAPplication
                 cIndex1 = cIndex2 + 1;
                 index++;
             }
-        }
+        }*/
     }
 }
