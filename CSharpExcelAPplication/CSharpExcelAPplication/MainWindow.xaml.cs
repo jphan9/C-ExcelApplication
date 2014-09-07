@@ -23,6 +23,8 @@ namespace CSharpExcelAPplication
     /// </summary>
     public partial class MainWindow : Window
     {
+        ExcelApplication eApp = new ExcelApplication();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -92,7 +94,7 @@ namespace CSharpExcelAPplication
                 return listA;
         }
 
-        public void ExcelApplication(string fileName)
+        /*public void ExcelApplication(string fileName)
         {
             Excel.Application oXL;
             Excel._Workbook oWB;
@@ -152,7 +154,7 @@ namespace CSharpExcelAPplication
                 cIndex1 = cIndex2 + 1;
                 index++;
             }
-        }
+        }*/
 
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
         {
@@ -191,9 +193,12 @@ namespace CSharpExcelAPplication
 
         private void goButton_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = dataLowTextbox.Text;
+            string fileName = LayoutTextbox.Text;
+            string fileName1 = dataLowTextbox.Text;
+            string fileName2 = dataMedTextbox.Text;
             //List<string> listA = readInFile(fileName);
-            ExcelApplication(fileName);
+            eApp.writeToExcelLow(fileName1, fileName);
+            eApp.writeToExcelMed(fileName2);
         }
 
     }
