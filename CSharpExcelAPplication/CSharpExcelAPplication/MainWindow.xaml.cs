@@ -24,6 +24,7 @@ namespace CSharpExcelAPplication
     public partial class MainWindow : Window
     {
         ExcelApplication eApp = new ExcelApplication();
+        readFiles readFile = new readFiles();
 
         public MainWindow()
         {
@@ -35,7 +36,7 @@ namespace CSharpExcelAPplication
             Environment.Exit(1);
         }
 
-        public string openFileDialogBox()
+        /*public string openFileDialogBox()
         {
             string fileName; 
             //create an instance of the open file dialog box.
@@ -159,35 +160,35 @@ namespace CSharpExcelAPplication
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = openFileDialogBox();
+            fileName = readFile.openFileDialogBox();
             LayoutTextbox.Text = fileName;
         }
 
         private void dataLowButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = openFileDialogBox();
+            fileName = readFile.openFileDialogBox();
             dataLowTextbox.Text = fileName;
         }
 
         private void dataMedButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = openFileDialogBox();
+            fileName = readFile.openFileDialogBox();
             dataMedTextbox.Text = fileName;
         }
 
         private void dataHighButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = openFileDialogBox();
+            fileName = readFile.openFileDialogBox();
             dataHighTextbox.Text = fileName;
         }
 
         private void dataUltraButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = openFileDialogBox();
+            fileName = readFile.openFileDialogBox();
             dataUltraTextbox.Text = fileName;
         }
 

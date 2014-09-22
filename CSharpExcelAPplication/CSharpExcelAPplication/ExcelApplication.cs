@@ -44,7 +44,7 @@ namespace CSharpExcelAPplication
 
         public void writeToExcel(string fileName, Excel._Worksheet oSheet, string sheetName)
         {
-            MainWindow main = new MainWindow();
+            readFiles readFile = new readFiles();
 
             /*Excel.Application oXL;
             Excel._Workbook oWB;
@@ -74,9 +74,9 @@ namespace CSharpExcelAPplication
             // Delete everything in that sheet. 
             oSheet.Cells.ClearContents();
 
-            listOfDataA = main.readInFile(fileName, 0);
-            listOfDataB = main.readInFile(fileName, 1);
-            listOfDataC = main.readInFile(fileName, 2);
+            listOfDataA = readFile.readInFile(fileName, 0);
+            listOfDataB = readFile.readInFile(fileName, 1);
+            listOfDataC = readFile.readInFile(fileName, 2);
 
             int rowIndexA = 1;
             int rowIndexB = 1;
