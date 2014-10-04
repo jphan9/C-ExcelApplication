@@ -160,35 +160,35 @@ namespace CSharpExcelAPplication
         private void heatmapLayoutbutton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = readFile.openFileDialogBox();
+            fileName = readFile.openFileDialogBox("workbook");
             LayoutTextbox.Text = fileName;
         }
 
         private void dataLowButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = readFile.openFileDialogBox();
+            fileName = readFile.openFileDialogBox("csv");
             dataLowTextbox.Text = fileName;
         }
 
         private void dataMedButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = readFile.openFileDialogBox();
+            fileName = readFile.openFileDialogBox("csv");
             dataMedTextbox.Text = fileName;
         }
 
         private void dataHighButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = readFile.openFileDialogBox();
+            fileName = readFile.openFileDialogBox("csv");
             dataHighTextbox.Text = fileName;
         }
 
         private void dataUltraButton_Click(object sender, RoutedEventArgs e)
         {
             string fileName;
-            fileName = readFile.openFileDialogBox();
+            fileName = readFile.openFileDialogBox("csv");
             dataUltraTextbox.Text = fileName;
         }
 

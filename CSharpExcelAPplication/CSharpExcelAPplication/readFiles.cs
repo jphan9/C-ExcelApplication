@@ -10,7 +10,7 @@ namespace CSharpExcelAPplication
     class readFiles
     {
         // method to show the open file dialog box.
-        public string openFileDialogBox()
+        public string openFileDialogBox(string extension)
         {
             string fileName;
             //create an instance of the open file dialog box.
@@ -20,8 +20,14 @@ namespace CSharpExcelAPplication
             openfileDialog1.Title = "Choose your file ";
 
             // Set filter options and filter index.
-            openfileDialog1.Filter = "CSV File|*.csv|Excel Workbook|*.xlsx";
-
+            if (extension == "workbook")
+            {
+                openfileDialog1.Filter = "Excel Workbook|*.xlsx";
+            }
+            else if (extension == "csv")
+            {
+                openfileDialog1.Filter = "CSV File|*.csv";
+            }
             bool? userClickedOK = openfileDialog1.ShowDialog();
 
             //process input if the user clicked ok.
