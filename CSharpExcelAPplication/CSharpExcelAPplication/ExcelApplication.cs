@@ -17,7 +17,7 @@ namespace CSharpExcelAPplication
             Excel.Application oXL;
             Excel._Workbook oWB;
             Excel._Worksheet oSheet;
-            Excel.Range oRng;
+            //Excel.Range oRng;
 
             // Start Excel and get Application object.
             oXL = new Excel.Application();
@@ -30,13 +30,13 @@ namespace CSharpExcelAPplication
 
             oSheet = (Excel._Worksheet)oWB.Sheets[2];
             writeToExcel(fileName, oSheet,"Data Low");
+
             oSheet = (Excel._Worksheet)oWB.Sheets[3];
             writeToExcel(fileName1, oSheet, "Data Med");
-            //if ((Excel._Worksheet)oWB.Sheets[4] == null)
-            //
-                oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing,oWB.Sheets[3],Type.Missing,Type.Missing);
-                writeToExcel(fileName2, oSheet, "Data High");
-            //}
+
+            oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[3], Type.Missing, Type.Missing);
+            writeToExcel(fileName2, oSheet, "Data High");
+
             oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[4], Type.Missing, Type.Missing);
             writeToExcel(fileName3, oSheet, "Data Ultra");
 
@@ -74,6 +74,10 @@ namespace CSharpExcelAPplication
             // Delete everything in that sheet. 
             oSheet.Cells.ClearContents();
 
+            // clearing the columns for each sheet. 
+            oSheet.Range["A1", "J1"].EntireColumn.Clear();
+
+            // Assign each list to the file that is read in.
             listOfDataA = readFile.readInFile(fileName, 0);
             listOfDataB = readFile.readInFile(fileName, 1);
             listOfDataC = readFile.readInFile(fileName, 2);
@@ -82,6 +86,7 @@ namespace CSharpExcelAPplication
             int rowIndexB = 1;
             int rowIndexC = 1;
 
+            // write the data from the lostofData to each cell. 
             for (int i = 0; i < listOfDataA.Count; i++)
             {
                 oSheet.Cells[rowIndexA, "A"] = listOfDataA[i];
