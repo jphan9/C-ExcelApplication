@@ -201,6 +201,7 @@ namespace CSharpExcelAPplication
             string fileName3 = dataUltraTextbox.Text;
             //List<string> listA = readInFile(fileName);
             //eApp.writeToExcelLow(fileName1, fileName);
+            MessageBox.Show(fileName);
             eApp.openExcel(openFileName, fileName, fileName1, fileName2, fileName3);
             //eApp.writeToExcelMed(fileName2);
         }

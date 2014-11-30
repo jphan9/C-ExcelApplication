@@ -28,17 +28,59 @@ namespace CSharpExcelAPplication
             oWB = (Excel._Workbook)(oXL.Workbooks.Open(@openFileName));
             //oSheet = (Excel._Worksheet)oWB.ActiveSheet;
 
-            oSheet = (Excel._Worksheet)oWB.Sheets[2];
-            writeToExcel(fileName, oSheet,"Data Low");
 
-            oSheet = (Excel._Worksheet)oWB.Sheets[3];
-            writeToExcel(fileName1, oSheet, "Data Med");
+            // Check to see if the user selected a file for the data. If the user does select a file check to write that data to the appropriate tab.     
+            if (fileName != "No File Selected")
+            {
+                try
+                {
+                    oSheet = (Excel._Worksheet)oWB.Sheets["Data Low"];
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[1], Type.Missing, Type.Missing);
+                }
+                writeToExcel(fileName, oSheet, "Data Low");
+            }
 
-            oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[3], Type.Missing, Type.Missing);
-            writeToExcel(fileName2, oSheet, "Data High");
+            if (fileName1 != "No File Selected")
+            {
+                try
+                {
+                    oSheet = (Excel._Worksheet)oWB.Sheets["Data Med"];
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[2], Type.Missing, Type.Missing);
+                }
+                writeToExcel(fileName1, oSheet, "Data Med");
+            }
 
-            oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[4], Type.Missing, Type.Missing);
-            writeToExcel(fileName3, oSheet, "Data Ultra");
+            if (fileName2 != "No File Selected")
+            {
+                try
+                {
+                    oSheet = (Excel._Worksheet)oWB.Sheets["Data High"];
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[3], Type.Missing, Type.Missing);
+                }
+                writeToExcel(fileName2, oSheet, "Data High");
+            }
+
+            if (fileName3 != "No File Selected")
+            {
+                try
+                {
+                    oSheet = (Excel._Worksheet)oWB.Sheets["Data Ultra"];
+                }
+                catch (System.Runtime.InteropServices.COMException)
+                {
+                    oSheet = (Excel._Worksheet)oWB.Worksheets.Add(Type.Missing, oWB.Sheets[4], Type.Missing, Type.Missing);
+                }
+                writeToExcel(fileName3, oSheet, "Data Ultra");
+            }
 
         }
 
