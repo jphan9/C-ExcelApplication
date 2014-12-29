@@ -9,7 +9,7 @@ namespace CSharpExcelAPplication
 {
     class readFiles
     {
-        // method to show the open file dialog box.
+        // Function to show the open file dialog box.
         public string openFileDialogBox(string extension)
         {
             string fileName;
@@ -40,7 +40,7 @@ namespace CSharpExcelAPplication
             return "No File Selected";
         }
 
-        // method to read in the file chosen.
+        // Function to read in the file chosen.
         public List<string> readInFile(string fileName, int column)
         {
             List<string> listA = new List<string>();
