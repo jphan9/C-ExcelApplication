@@ -1,7 +1,7 @@
 ﻿<Window x:Class="CSharpExcelAPplication.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Convert to Excel" Height="550" Width="700">
+        Title="Convert to Excel" Height="550" Width="700" Icon="EA.ico">
     <Grid>
         <Label x:Name="LayoutLabel" Content="Choose the layout file: " HorizontalAlignment="Left" Margin="45,36,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="LayoutTextbox" HorizontalAlignment="Left" Height="23" Margin="45,62,0,0" TextWrapping="Wrap" Text="No File Selected" VerticalAlignment="Top" Width="410" IsReadOnly="True"/>
